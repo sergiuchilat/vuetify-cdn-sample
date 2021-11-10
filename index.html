@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://127.0.0.1:5500/style.css">
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+        <v-container>
+
+            <v-card>
+                <v-card-title>Financial trend analyzer</v-card-title>
+                <v-card-text>
+                    <v-row>
+                        <v-col>
+                            <header>Companies</header>
+                            <v-text-field outlined dense></v-text-field>
+                            <v-btn color="primary">+Company</v-btn>
+                        </v-col>
+                        <v-col>
+                            <header>Dates</header>
+                            <v-text-field outlined dense></v-text-field>
+                            <v-btn color="primary">+Date</v-btn>
+                        </v-col>
+                        <v-col>
+                            <header>Market</header>
+                            <v-combobox :items="items" outlined dense></v-combobox>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-actions class="d-flex justify-end">
+                    <v-btn color="success">Analyze</v-btn>
+                </v-card-actions> 
+            </v-card>
+
+            <v-card class="mt-2">
+                <v-card-title>Results</v-card-title>
+                <v-card-text>
+                    <v-container>
+                        <v-row class="h5 grey lighten-3">
+                            <v-col class="grey lighten-3">2002-11-30</v-col>
+                            <v-col>Refecence date</v-col>
+                            <v-col>Date+3</v-col>
+                            <v-col>Date+7</v-col>
+                            <v-col>Date+30</v-col>
+                            <v-col>Date+60</v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col>Date</v-col>
+                            <v-col>2002-11-30</v-col>
+                            <v-col>2002-12-03</v-col>
+                            <v-col>2002-12-07</v-col>
+                            <v-col>2002-12-30</v-col>
+                            <v-col>2003-01-29</v-col>
+                        </v-row>
+                        <v-template v-for="i in 5">
+                            <v-row>
+                                <v-col class="text-center grey lighten-5 font-weight-bold">AAPL</v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>Value</v-col>
+                                <v-col class="text-right">39 110,00</v-col>
+                                <v-col class="text-right">39 110,00</v-col>
+                                <v-col class="text-right">39 110,00</v-col>
+                                <v-col class="text-right">39 110,00</v-col>
+                                <v-col class="text-right">39 110,00</v-col>
+                            </v-row>
+                            <v-row>
+                                <v-col>Trend</v-col>
+                                <v-col class="success lighten-4 text-right">+35,78</v-col>
+                                <v-col class="error lighten-4 text-right">-23,11</v-col>
+                                <v-col class="text-right">0,00</v-col>
+                                <v-col class="success lighten-4 text-right">+18,34</v-col>
+                                <v-col class="success lighten-4 text-right">+12,25</v-col>
+                            </v-row>
+                        </v-template>
+                    </v-container>
+                </v-card-text>
+            </v-card>
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+        data () {
+            return {
+                items: [
+                    'S&P',
+                    'Nasdaq',
+                    'Dow 30'
+                ],
+            }
+        }
+    })
+  </script>
+</body>
+</html>
